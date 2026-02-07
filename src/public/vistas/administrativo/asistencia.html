@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Asistencia | Administrativo</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+    <!-- ===================== Barra lateral ===================== -->
+    <body>
+    <div class="barra-lateral">
+        <div class="barra-lateral__encabezado">
+            <div class="barra-lateral__icono barra-lateral__icono-centrado">
+                <img src="/img/icono.png" alt="JGR" class="barra-lateral__imagen-logo">
+            </div>
+            <span class="barra-lateral__nombre-logo">JGR</span>
+        </div>
+        <ul class="barra-lateral__navegacion">
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="toggleSidebar" class="barra-lateral__enlace barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/layout-sidebar-left-collapse.svg" alt="arrow-autofit-left">
+                    <span class="barra-lateral__texto">Cerrar Menú</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="panel.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/home.svg" alt="home">
+                    <span class="barra-lateral__texto">Panel</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="../administrativo/inventario.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/inventario.svg" alt="inventario">
+                    <span class="barra-lateral__texto">Inventario</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="obreros.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/users-group.svg" alt="users-group">
+                    <span class="barra-lateral__texto">Obreros</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" class="barra-lateral__enlace barra-lateral__enlace--activo">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/checkup-list-active.svg" alt="checkup-list-active">
+                    <span class="barra-lateral__texto">Asistencia</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="btnCambiarPasswordSidebar" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/key.svg" alt="key">
+                    <span class="barra-lateral__texto">Cambiar Clave</span>
+                </a>
+            </li>
+            <li class="barra-lateral__cerrar-sesion">
+                <a href="#" id="logoutBtn" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/logout.svg" alt="logout">
+                    <span class="barra-lateral__texto">Cerrar Sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- ===================== Panel principal ===================== -->
+    <section class="panel-principal">
+        <nav class="barra-superior">
+            <div class="barra-superior__alternar">
+                <div class="menu-toggle-btn" id="btnMenuSidebar">
+                    <img src="../../img/icons/menu-2.svg" alt="Menú">
+                </div>
+                <span class="dashboard-text">Gestión de Asistencia</span>
+            </div>
+        </nav>
+        <div class="panel-principal__contenido">
+            <div class="tarjeta-tabla tarjeta-tabla--scrolling">
+                <div class="cabecera-flex-margen-20">
+                    <div>
+                        <h2>Control de Asistencia Mensual</h2>
+                        <div class="flex-center-gap-10">
+                            <button class="boton boton--icono boton--secundario no-print boton-padding-small" onclick="cambiarMes(-1)">
+                                <img src="../../img/icons/caret-left.svg" alt="caret-left">
+                            </button>
+                            <h3 id="mesActualTitulo" class="titulo-mes-asistencia"></h3>
+                            <button class="boton boton--icono boton--secundario no-print boton-padding-small" onclick="cambiarMes(1)">
+                                <img src="../../img/icons/caret-right.svg" alt="caret-right">
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Buscador -->
+                    <div class="buscador-contenedor no-print">
+                        <img src="../../img/icons/search.svg" alt="search">
+                        <input type="text" id="buscadorAsistencia" class="buscador-input" placeholder="Buscar obrero...">
+                    </div>
+
+                    <button class="boton boton--primario no-print" onclick="window.print()">
+                        Imprimir Informe
+                    </button>
+                </div>
+
+                <div class="tabs-container no-print">
+                    <button class="tab-button active" onclick="cambiarPestaña('general')">Personal General</button>
+                    <button class="tab-button" onclick="cambiarPestaña('guardia')">Vigilantes</button>
+                </div>
+
+                <div class="tabla-responsive">
+                    <table class="tabla-datos tabla-mensual">
+                        <thead id="tablaEncabezado">
+                        </thead>
+                        <tbody id="tablaAsistenciaMensual">
+                        </tbody>
+                        <tfoot class="footer-spacer">
+                            <tr>
+                                <td colspan="50" class="celda-espaciadora-impresion-grande"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="seccion-firma-impresion">
+        <div class="caja-firma">
+            <div class="linea-firma"></div>
+            <div class="texto-firma">Firma Directivo/Admin</div>
+        </div>
+        <div class="caja-firma">
+            <div class="linea-firma"></div>
+            <div class="texto-firma">Sello del Plantel</div>
+        </div>
+    </div>
+
+
+    <!-- ===================== Templates ===================== -->
+    <template id="template-fila-asistencia-info">
+        <td class="asistencia-index" style="text-align: center;"></td>
+        <td class="asistencia-nombre-container" style="text-align: left; font-weight: bold; min-width: 200px;">
+            <span class="asistencia-nombre"></span><br>
+            <small class="asistencia-cedula"></small>
+        </td>
+    </template>
+    
+    <template id="template-mi-asistencia">
+        <tr>
+            <td class="mi-fecha" style="padding: 10px;"></td>
+            <td class="mi-hora" style="padding: 10px;"></td>
+            <td class="mi-tipo" style="padding: 10px; font-weight: bold;"></td>
+        </tr>
+    </template>
+    <!-- ===================== Scripts ===================== -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/asistencia.js"></script>
+</body>
+
+</html>

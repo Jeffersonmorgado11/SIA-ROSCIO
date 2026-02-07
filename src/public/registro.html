@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Administrativo | S.I.A ROSCIO</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="pagina-ingreso">
+    <!-- ===================== Logo ===================== -->
+    <div>
+        <img src="img/logo.png" alt="logo" class="logo">
+    </div>
+    <!-- ===================== Contenedor de Formularios ===================== -->
+    <div class="tarjeta-ingreso" style="max-width: 500px;">
+        <!-- ===================== Paso 1: Verificación ===================== -->
+        <form id="formCedula">
+            <h1 class="tarjeta-ingreso__titulo">Verificar identidad</h1>
+            <p class="texto-descripcion">Ingrese su Cédula de Identidad para verificar su
+                autorización.</p>
+            <div class="grupo-formulario">
+                <input type="text" id="cedulaCheck" class="grupo-formulario__input" placeholder="Cédula de Identidad"
+                    required>
+                <img src="/img/icons/chalkboard-teacher.svg" alt="chalkboard-teacher" class="grupo-formulario__icono">
+            </div>
+            <button type="submit" class="boton">Verificar</button>
+            <div class="tarjeta-ingreso__pie">
+                <p>¿Ya tienes cuenta? <a href="index.html">Ingresar</a></p>
+            </div>
+        </form>
+        <!-- ===================== Paso 2: Registro ===================== -->
+        <form id="formRegistro" style="display: none;">
+            <h1 class="tarjeta-ingreso__titulo">Registro</h1>
+            <div id="infoPreAuth" class="info-pre-auth">
+                <p><strong>Nombre:</strong> <span id="lblNombre"></span></p>
+                <p><strong>Cargo:</strong> <span id="lblCargo"></span></p>
+            </div>
+
+            <input type="hidden" id="cedulaFinal">
+
+            <div class="grupo-formulario">
+                <input type="email" id="email" class="grupo-formulario__input" placeholder="Correo Electrónico"
+                    required>
+                <img src="/img/icons/mail.svg" alt="mail" class="grupo-formulario__icono">
+            </div>
+            <div class="grupo-formulario">
+                <input type="password" id="password" class="grupo-formulario__input" placeholder="Contraseña" required>
+                <img src="/img/icons/key.svg" alt="key" class="grupo-formulario__icono">
+            </div>
+            <div class="grupo-formulario">
+                <input type="password" id="confirmPassword" class="grupo-formulario__input"
+                    placeholder="Confirmar Contraseña" required>
+                <img src="/img/icons/shield-lock.svg" alt="shield-lock" class="grupo-formulario__icono">
+            </div>
+
+            <button type="submit" class="boton">Completar Registro</button>
+            <div class="tarjeta-ingreso__pie">
+                <p><a href="#" onclick="volverPaso1()">Volver</a></p>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!-- ===================== Scripts ===================== -->
+
+    <script src="js/registro.js"></script>
+    <script src="js/password-toggle.js"></script>
+</body>
+
+</html>

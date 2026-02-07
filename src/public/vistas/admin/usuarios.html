@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Personal | S.I.A ROSCIO</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <!-- ===================== Barra lateral ===================== -->
+    <div class="barra-lateral">
+        <div class="barra-lateral__encabezado">
+            <div class="barra-lateral__icono barra-lateral__icono-centrado">
+                <img src="/img/icono.png" alt="S.I.A ROSCIO" class="barra-lateral__imagen-logo">
+            </div>
+            <span class="barra-lateral__nombre-logo">S.I.A ROSCIO</span>
+        </div>
+        <ul class="barra-lateral__navegacion">
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="toggleSidebar" class="barra-lateral__enlace barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/layout-sidebar-left-collapse.svg" alt="arrow-autofit-left">
+                    <span class="barra-lateral__texto">Cerrar Menú</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="panel.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/home.svg" alt="home">
+                    <span class="barra-lateral__texto">Panel</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" class="barra-lateral__enlace barra-lateral__enlace--activo">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/users-group-active.svg" alt="users-group-active">
+                    <span class="barra-lateral__texto">Usuarios</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="solicitudes_password.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/password-user.svg" alt="password-user">
+                    <span class="barra-lateral__texto">Solicitudes</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="btnCambiarPasswordSidebar" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/key.svg" alt="key">
+                    <span class="barra-lateral__texto">Cambiar Clave</span>
+                </a>
+            </li>
+            <li class="barra-lateral__cerrar-sesion">
+                <a href="#" id="logoutBtn" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/logout.svg" alt="logout">
+                    <span class="barra-lateral__texto">Cerrar Sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ===================== Templates ===================== -->
+    <template id="template-fila-usuario">
+        <tr>
+            <td class="usuario-nombre"></td>
+            <td class="usuario-email"></td>
+            <td class="usuario-rol"></td>
+            <td class="usuario-cedula"></td>
+            <td class="usuario-acciones">
+                <button class="boton--icono boton--eliminar btn-eliminar">
+                    <img src="../../img/icons/x.svg" alt="x">
+                </button>
+            </td>
+        </tr>
+    </template>
+
+    <template id="template-fila-preauth">
+        <tr>
+            <td class="pre-cedula"></td>
+            <td class="pre-nombre-completo"></td>
+            <td class="pre-cargo"></td>
+            <td><span class="pre-estado estado-badge"></span></td>
+            <td>
+                <button class="boton--icono boton--eliminar btn-eliminar">
+                    <img src="../../img/icons/x.svg" alt="x">
+                </button>
+            </td>
+        </tr>
+    </template>
+    <!-- ===================== Panel principal ===================== -->
+    <section class="panel-principal">
+        <nav class="barra-superior">
+            <div class="barra-superior__alternar">
+                <div class="menu-toggle-btn" id="btnMenuSidebar">
+                    <img src="../../img/icons/menu-2.svg" alt="Menú">
+                </div>
+                <span class="dashboard-text">Gestión de Administrativos</span>
+            </div>
+        </nav>
+        <div class="panel-principal__contenido">
+            <!-- Sección Pre-autorizaciones -->
+            <div class="tarjeta-tabla tarjeta-tabla--margen-inferior">
+                <div class="cabecera-flex-centrada">
+                    <h3>Pre-autorizaciones (Cédulas permitidas)</h3>
+                    <button class="boton" onclick="abrirModalPre()">Nueva Autorización</button>
+                </div>
+                <br>
+                <table class="tabla-datos">
+                    <thead>
+                        <tr>
+                            <th>Cédula</th>
+                            <th>Nombre</th>
+                            <th>Cargo</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaPreAuth"></tbody>
+                </table>
+            </div>
+
+            <!-- Sección Usuarios Sistema -->
+            <div class="tarjeta-tabla">
+                <h3>Usuarios Registrados en Sistema</h3>
+                <br>
+                <table class="tabla-datos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Cédula</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuarios"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Scripts ===================== -->
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/admin_personal.js"></script>
+</body>
+
+</html>

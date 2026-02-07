@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario Comedor | S.I.A ROSCIO</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+    <!-- ===================== Barra lateral ===================== -->
+    <body>
+    <div class="barra-lateral">
+        <div class="barra-lateral__encabezado">
+            <div class="barra-lateral__icono barra-lateral__icono-centrado">
+                <img src="/img/icono.png" alt="S.I.A ROSCIO" class="barra-lateral__imagen-logo">
+            </div>
+            <span class="barra-lateral__nombre-logo">S.I.A ROSCIO</span>
+        </div>
+        <ul class="barra-lateral__navegacion">
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="toggleSidebar" class="barra-lateral__enlace barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/layout-sidebar-left-collapse.svg" alt="arrow-autofit-left">
+                    <span class="barra-lateral__texto">Cerrar Menú</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="../administrativo/panel.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/home.svg" alt="home">
+                    <span class="barra-lateral__texto">Panel</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" class="barra-lateral__enlace barra-lateral__enlace--activo">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/inventario-active.svg" alt="inventario-active">
+                    <span class="barra-lateral__texto">Inventario</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="../administrativo/obreros.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/users-group.svg" alt="users-group">
+                    <span class="barra-lateral__texto">Obreros</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="../administrativo/asistencia.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/checkup-list.svg" alt="checkup-list">
+                    <span class="barra-lateral__texto">Asistencia</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="btnCambiarPasswordSidebar" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/key.svg" alt="key">
+                    <span class="barra-lateral__texto">Cambiar Clave</span>
+                </a>
+            </li>
+            <li class="barra-lateral__cerrar-sesion">
+                <a href="#" id="logoutBtn" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/logout.svg" alt="logout">
+                    <span class="barra-lateral__texto">Cerrar Sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- ===================== Panel principal ===================== -->
+    <section class="panel-principal">
+        <nav class="barra-superior">
+            <div class="barra-superior__alternar">
+                <div class="menu-toggle-btn" id="btnMenuSidebar">
+                    <img src="../../img/icons/menu-2.svg" alt="Menú">
+                </div>
+                <span class="dashboard-text">Gestión de Inventario</span>
+            </div>
+        </nav>
+        <div class="panel-principal__contenido">
+            <div class="tarjeta-tabla">
+                <div class="cabecera-tabla">
+                    <div class="contenedor-acciones-tabla">
+                        <button class="boton" onclick="abrirModalProducto()">Nuevo Producto</button>
+                        <button class="boton" onclick="verHistorial()">Ver Historial</button>
+                    </div>
+                    <div class="buscador-contenedor">
+                        <img src="../../img/icons/search.svg" alt="search">
+                        <input type="text" id="buscadorInventario" class="buscador-input"
+                            placeholder="Buscar producto...">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="tabla-responsive">
+                    <table class="tabla-datos">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th>Stock</th>
+                                <th>Unidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaProductos">
+                        </tbody>
+                        <tfoot class="footer-spacer">
+                            <tr>
+                                <td colspan="50" class="celda-espaciadora-impresion"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+    <!-- Templates -->
+    <template id="template-producto">
+        <tr class="producto-item">
+            <td class="producto-nombre"></td>
+            <td class="producto-categoria"></td>
+            <td class="producto-stock" style="font-weight: bold;"></td>
+            <td class="producto-unidad"></td>
+            <td>
+                <button class="boton--icono boton--acciones btn-entrada" title="Entrada">
+                    <img src="../../img/icons/plus.svg" alt="">
+                </button>
+                <button class="boton--icono boton--acciones btn-salida" title="Salida">
+                    <img src="../../img/icons/minus.svg" alt="">
+                </button>
+                <button class="boton--icono boton--eliminar btn-eliminar">
+                    <img src="../../img/icons/x.svg" alt="x">
+                </button>
+            </td>
+        </tr>
+    </template>
+
+    <template id="template-fila-historial">
+        <tr>
+            <td class="historial-fecha"></td>
+            <td class="historial-producto"></td>
+            <td class="historial-tipo" style="font-weight: bold;"></td>
+            <td class="historial-cantidad"></td>
+            <td class="historial-motivo"></td>
+            <td class="historial-usuario"></td>
+        </tr>
+    </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- //Sección de Firma// -->
+    <div class="seccion-firma-impresion">
+        <div class="caja-firma">
+            <div class="linea-firma"></div>
+            <div class="texto-firma">Firma Directivo/Admin</div>
+        </div>
+        <div class="caja-firma">
+            <div class="linea-firma"></div>
+            <div class="texto-firma">Sello del Plantel</div>
+        </div>
+    </div>
+    <!-- ===================== Scripts ===================== -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/inventario.js"></script>
+</body>
+
+</html>

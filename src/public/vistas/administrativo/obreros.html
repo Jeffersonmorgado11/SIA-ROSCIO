@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Obreros | Administrativo</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <!-- ===================== Barra lateral ===================== -->
+    <div class="barra-lateral">
+        <div class="barra-lateral__encabezado">
+            <div class="barra-lateral__icono barra-lateral__icono-centrado">
+                <img src="/img/icono.png" alt="JGR" class="barra-lateral__imagen-logo">
+            </div>
+            <span class="barra-lateral__nombre-logo">JGR</span>
+        </div>
+        <ul class="barra-lateral__navegacion">
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="toggleSidebar" class="barra-lateral__enlace barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/layout-sidebar-left-collapse.svg" alt="arrow-autofit-left">
+                    <span class="barra-lateral__texto">Cerrar Menú</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="panel.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/home.svg" alt="home">
+                    <span class="barra-lateral__texto">Panel</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="../administrativo/inventario.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/inventario.svg" alt="inventario">
+                    <span class="barra-lateral__texto">Inventario</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" class="barra-lateral__enlace barra-lateral__enlace--activo">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/users-group-active.svg" alt="users-group-active">
+                    <span class="barra-lateral__texto">Obreros</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="asistencia.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/checkup-list.svg" alt="checkup-list">
+                    <span class="barra-lateral__texto">Asistencia</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="btnCambiarPasswordSidebar" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/key.svg" alt="key">
+                    <span class="barra-lateral__texto">Cambiar Clave</span>
+                </a>
+            </li>
+            <li class="barra-lateral__cerrar-sesion">
+                <a href="#" id="logoutBtn" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/logout.svg" alt="logout">
+                    <span class="barra-lateral__texto">Cerrar Sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- ===================== Panel principal ===================== -->
+    <section class="panel-principal">
+        <nav class="barra-superior">
+            <div class="barra-superior__alternar">
+                <div class="menu-toggle-btn" id="btnMenuSidebar">
+                    <img src="../../img/icons/menu-2.svg" alt="Menú">
+                </div>
+                <span class="dashboard-text">Gestión de Personal Obrero</span>
+            </div>
+        </nav>
+        <div class="panel-principal__contenido">
+            <div class="tarjeta-tabla">
+                <div class="cabecera-tabla">
+                    <button class="boton" onclick="abrirModalObrero()">Registrar Obrero</button>
+                    <div class="buscador-contenedor">
+                        <img src="../../img/icons/search.svg" alt="search">
+                        <input type="text" id="buscadorObrero" class="buscador-input"
+                            placeholder="Buscar por nombre, cédula o cargo...">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="tabla-responsive">
+                    <table class="tabla-datos">
+                        <thead>
+                            <tr>
+                                <th>Cédula</th>
+                                <th>Nombre Completo</th>
+                                <th>Cargo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaObreros"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== Templates ===================== -->
+    <template id="template-obrero">
+        <tr>
+            <td class="obrero-cedula"></td>
+            <td class="obrero-nombre"></td>
+            <td class="obrero-cargo"></td>
+            <td class="acciones-celda">
+                <button class="boton--icono btn-ver boton--acciones">
+                    <img src="../../img/icons/eye.svg" alt="eye">
+                </button>
+                <button class="boton--icono boton--editar btn-editar boton--acciones">
+                    <img src="../../img/icons/pencil.svg" alt="pencil">
+                </button>
+                <button class="boton--icono btn-guardia boton--acciones" title="Gestionar Guardias" style="display: none;">
+                    <img src="../../img/icons/calendar-event.svg" alt="calendar">
+                </button>
+                <button class="boton--icono boton--eliminar btn-eliminar">
+                    <img src="../../img/icons/x.svg" alt="x">
+                </button>
+            </td>
+        </tr>
+    </template>
+
+    <!-- ===================== Modales ===================== -->
+    <!-- Los modales de obreros (Registrar, Ver Detalles, Guardias) se cargan dinámicamente desde modales.html -->
+
+
+
+
+
+    <!-- ===================== Scripts ===================== -->
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/gestion_obreros.js"></script>
+</body>
+
+</html>

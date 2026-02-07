@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador | S.I.A ROSCIO</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <!-- ===================== Barra lateral ===================== -->
+    <div class="barra-lateral">
+        <div class="barra-lateral__encabezado">
+            <div class="barra-lateral__icono barra-lateral__icono-centrado">
+                <img src="/img/icono.png" alt="S.I.A ROSCIO" class="barra-lateral__imagen-logo">
+            </div>
+            <span class="barra-lateral__nombre-logo">S.I.A ROSCIO</span>
+        </div>
+        <ul class="barra-lateral__navegacion">
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="toggleSidebar" class="barra-lateral__enlace barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/layout-sidebar-left-collapse.svg" alt="arrow-autofit-left">
+                    <span class="barra-lateral__texto">Cerrar Menú</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" class="barra-lateral__enlace barra-lateral__enlace--activo">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/home-active.svg" alt="home-active">
+                    <span class="barra-lateral__texto">Panel</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="usuarios.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/users-group.svg" alt="users-group">
+                    <span class="barra-lateral__texto">Usuarios</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="solicitudes_password.html" class="barra-lateral__enlace">
+                    <img class="barra-lateral__icono-nav" src="../../img/icons/password-user.svg" alt="password-user">
+                    <span class="barra-lateral__texto">Solicitudes</span>
+                </a>
+            </li>
+            <li class="barra-lateral__item-nav">
+                <a href="#" id="btnCambiarPasswordSidebar" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/key.svg" alt="key">
+                    <span class="barra-lateral__texto">Cambiar Clave</span>
+                </a>
+            </li>
+            <li class="barra-lateral__cerrar-sesion">
+                <a href="#" id="logoutBtn" class="barra-lateral__enlace">
+                    <img class="botonsidebar barra-lateral__icono-nav" src="../../img/icons/logout.svg" alt="logout">
+                    <span class="barra-lateral__texto">Cerrar Sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- ===================== Panel principal ===================== -->
+    <section class="panel-principal">
+        <nav class="barra-superior">
+            <div class="barra-superior__alternar">
+                <div class="menu-toggle-btn" id="btnMenuSidebar">
+                    <img src="../../img/icons/menu-2.svg" alt="Menú">
+                </div>
+                <span class="dashboard-text">Panel Administrador</span>
+            </div>
+        </nav>
+        <div class="panel-principal__contenido">
+            <div class="panel-bienvenida">
+                <div class="panel-bienvenida__texto">
+                    <h1>Bienvenido al Panel de Administrador</h1>
+                    <p>
+                        Desde aquí puedes gestionar los usuarios del sistema, crear nuevas cuentas y asignar roles.
+                        Garantiza la seguridad y el correcto acceso a la plataforma "S.I.A ROSCIO".
+                    </p>
+                </div>
+                <img src="/img/banner.svg" alt="Banner Bienvenida" class="panel-bienvenida__imagen">
+            </div>
+
+            <div class="panel-grid">
+                <!-- Tarjeta Usuarios -->
+                <a href="usuarios.html" class="panel-card">
+                    <div class="panel-card__icono">
+                        <img src="../../img/icons/users-group.svg" alt="users-group">
+                    </div>
+                    <h3>Gestión de Usuarios</h3>
+                    <p>Administra las cuentas de acceso, crea nuevos usuarios y asigna roles para mantener la seguridad
+                        del sistema.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+    <!-- ===================== Scripts ===================== -->
+    <script src="../../js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,393 @@
+<!-- ===================== MODALES GENÉRICOS ===================== -->
+
+<!-- Modal Genérico -->
+
+<div id="modalMensaje" class="modal">
+    <div class="modal__contenido modal__contenido--mensaje">
+        <div class="modal__encabezado-icono modal__encabezado-icono--secundario">
+            <img src="/img/icons/bell.svg" alt="bell">
+        </div>
+        <h2 id="modalTitulo" class="modal__titulo-centrado modal__titulo-sin-margen-top"></h2>
+        <p id="modalTexto" class="modal__texto-mensaje"></p>
+        <div id="modalBotones" class="modal__botones-mensaje"></div>
+    </div>
+</div>
+
+<!-- Modal de Éxito -->
+<div id="modalExito" class="modal">
+    <div class="modal__contenido modal__contenido--exito">
+        <div class="modal__icono-exito">
+            <img src="/img/icons/circle-check.svg" alt="circle-check">
+        </div>
+        <h2 id="mensajeExitoTitulo">¡Éxito!</h2>
+        <p id="mensajeExitoTexto">Operación realizada correctamente.</p>
+        <button class="boton boton--exito-modal" onclick="cerrarModalExito()">Aceptar</button>
+    </div>
+</div>
+
+<!-- Modal de Confirmación -->
+<div id="modalConfirmacion" class="modal">
+    <div class="modal__contenido modal__contenido--exito">
+        <div class="modal__encabezado-icono modal__encabezado-icono--primario">
+            <img src="/img/icons/shield-checkered.svg" alt="shield-checkered">
+        </div>
+        <h2 id="mensajeConfirmacionTitulo" class="modal__titulo-centrado">Confirmar Acción</h2>
+        <p id="mensajeConfirmacionTexto" class="texto-centrado-margen">¿Estás seguro de realizar esta acción?</p>
+        <div class="botones-centrados">
+            <button class="boton boton--secundario" onclick="cerrarModalConfirmacion()">Cancelar</button>
+            <button id="btnConfirmarAccion" class="boton boton--primario">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== MODALES DE AUTENTICACIÓN ===================== -->
+
+<!-- Modal Cambiar Contraseña -->
+<div id="modalPassword" class="modal">
+    <div class="modal__contenido">
+        <span class="modal__cerrar" onclick="cerrarModal('modalPassword')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--seguro">
+            <img src="/img/icons/key-active.svg" alt="key-active">
+        </div>
+        <h2 class="modal__titulo-centrado">Cambiar Contraseña</h2>
+        <form id="formPassword">
+            <div class="grupo-formulario">
+                <label>Contraseña Actual:</label>
+                <input type="password" id="passwordActual" class="grupo-formulario__input" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Nueva Contraseña:</label>
+                <input type="password" id="passwordNuevo" class="grupo-formulario__input" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Confirmar Nueva:</label>
+                <input type="password" id="passwordConfirmar" class="grupo-formulario__input" required>
+            </div>
+            <button type="submit" class="boton">Actualizar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ===================== MODALES DE ADMINISTRACIÓN - SOLICITUDES ===================== -->
+
+<!-- Modal Restablecimiento Exitoso -->
+<div id="modalReset" class="modal">
+    <div class="modal__contenido modal__contenido--centrado">
+        <div class="modal__encabezado-icono modal__encabezado-icono--exito">
+            <img src="/img/icons/check.svg" alt="check">
+        </div>
+        <h2 class="modal__titulo-centrado">Contraseña Restablecida</h2>
+        <p>La contraseña ha sido reseteada correctamente.</p>
+
+        <div class="caja-password-temp">
+            <p class="texto-etiqueta-pequena">Nueva Contraseña Temporal:</p>
+            <div class="contenedor-password-copy">
+                <strong id="tempPassword" class="texto-password-grande"></strong>
+                <button class="boton--icono boton-copiar" onclick="copiarPassword()" title="Copiar">
+                    <img src="/img/icons/copy.svg" alt="copy">
+                </button>
+            </div>
+        </div>
+        <p class="texto-ayuda-gris">Por favor comunica esta contraseña al usuario.</p>
+        <button class="boton" onclick="cerrarModal('modalReset'); cargarSolicitudes();">Entendido</button>
+    </div>
+</div>
+
+<!-- ===================== MODALES DE ADMINISTRACIÓN - USUARIOS ===================== -->
+
+<!-- Modal Pre-autorización -->
+<div id="preAuthModal" class="modal">
+    <div class="modal__contenido">
+        <span class="modal__cerrar" onclick="cerrarModal('preAuthModal')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--primario">
+            <img src="/img/icons/user.svg" alt="user">
+        </div>
+        <h2 class="modal__titulo-centrado">Autorizar Nuevo Administrativo</h2>
+        <form id="preAuthForm">
+            <div class="grupo-formulario">
+                <label>Cédula:</label>
+                <input type="text" id="preCedula" class="grupo-formulario__input" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Nombres:</label>
+                <input type="text" id="preNombre" class="grupo-formulario__input" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Apellidos:</label>
+                <input type="text" id="preApellido" class="grupo-formulario__input" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Cargo:</label>
+                <input type="text" id="preCargo" class="grupo-formulario__input" required>
+            </div>
+            <button type="submit" class="boton">Autorizar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ===================== MODALES DE ADMINISTRACIÓN - INVENTARIO ===================== -->
+
+<!-- Modal Producto -->
+<div id="productoModal" class="modal">
+    <div class="modal__contenido">
+        <span class="modal__cerrar" onclick="cerrarModal('productoModal')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--primario">
+            <img src="/img/icons/cube-plus.svg" alt="cube-plus">
+        </div>
+        <h2 class="modal__titulo-centrado">Nuevo Producto</h2>
+        <form id="productoForm">
+            <div class="grupo-formulario">
+                <label>Nombre:</label>
+                <input type="text" id="nombreC" class="grupo-formulario__input" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Categoría:</label>
+                <select id="categoriaC" class="grupo-formulario__select">
+                    <option value="alimento">Alimento</option>
+                    <option value="utensilio">Utensilio</option>
+                    <option value="limpieza">Limpieza</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="grupo-formulario">
+                <label>Unidad de Medida:</label>
+                <input type="text" id="unidadC" class="grupo-formulario__input" placeholder="kg, litros, unidades" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Stock Minimo:</label>
+                <input type="number" id="minimoC" class="grupo-formulario__input" value="5" required>
+            </div>
+            <button type="submit" class="boton">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Movimiento -->
+<div id="movimientoModal" class="modal">
+    <div class="modal__contenido">
+        <span class="modal__cerrar" onclick="cerrarModal('movimientoModal')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--secundario">
+            <img src="/img/icons/arrows-down-up.svg" alt="arrows-down-up">
+        </div>
+        <h2 id="movimientoTitulo" class="modal__titulo-centrado">Registrar Movimiento</h2>
+        <form id="movimientoForm">
+            <input type="hidden" id="movProductoId">
+            <input type="hidden" id="movTipo">
+            <p>Producto: <span id="movProductoNombre" class="texto-bold"></span></p>
+            <div class="grupo-formulario">
+                <label>Cantidad:</label>
+                <input type="number" id="movCantidad" class="grupo-formulario__input" min="1" required>
+            </div>
+            <div class="grupo-formulario">
+                <label>Motivo:</label>
+                <input type="text" id="movMotivo" class="grupo-formulario__input" required
+                    placeholder="Ej: Compra mensual, Consumo diario">
+            </div>
+            <button type="submit" class="boton">Registrar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Historial -->
+<div id="historialModal" class="modal">
+    <div class="modal__contenido modal__contenido--ancho-80">
+        <span class="modal__cerrar" onclick="cerrarModal('historialModal')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--secundario">
+                <img src="/img/icons/arrows-down-up.svg" alt="arrows-down-up">
+        </div>
+        <div class="modal__cabecera-flex">
+            <h2 class="modal__titulo-centrado modal__titulo-sin-margen-bottom">Historial de Movimientos</h2>
+            <button class="boton boton--secundario" onclick="imprimirHistorial()">Imprimir</button>
+        </div>
+        <div class="no-print filtro-fechas">
+            <div class="grupo-formulario grupo-formulario--sin-margen">
+                <label class="etiqueta-pequena">Desde:</label>
+                <input type="date" id="fechaInicio" class="grupo-formulario__input input-pequeno">
+            </div>
+            <div class="grupo-formulario grupo-formulario--sin-margen">
+                <label class="etiqueta-pequena">Hasta:</label>
+                <input type="date" id="fechaFin" class="grupo-formulario__input input-pequeno">
+            </div>
+            <button class="boton boton-pequeno" onclick="filtrarHistorialPorFecha()">Filtrar</button>
+            <button class="boton boton--secundario boton-pequeno" onclick="limpiarFiltroFechas()">Limpiar</button>
+        </div>
+
+        <div id="contenedorTablaHistorial" class="contenedor-tabla-scroll">
+            <table class="tabla-datos">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Producto</th>
+                        <th>Tipo</th>
+                        <th>Cantidad</th>
+                        <th>Motivo</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaHistorial"></tbody>
+                <tfoot class="footer-spacer">
+                    <tr>
+                        <td colspan="50" class="celda-espaciadora-impresion"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== MODALES DE ADMINISTRACIÓN - OBREROS ===================== -->
+
+<!-- Modal Obrero -->
+<div id="obreroModal" class="modal">
+    <div class="modal__contenido">
+        <span class="modal__cerrar" onclick="cerrarModal('obreroModal')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--primario">
+            <img src="/img/icons/user.svg" alt="user"> 
+        </div>
+        <h2 id="modalTitle" class="modal__titulo-centrado">Registrar Obrero</h2>
+        <form id="obreroForm">
+            <input type="hidden" id="obreroId">
+            <div class="form-flex-gap">
+                <div class="grupo-formulario grupo-formulario--flex-1">
+                    <label>Nombres:</label>
+                    <input type="text" id="obNombres" class="grupo-formulario__input" required>
+                </div>
+                <div class="grupo-formulario grupo-formulario--flex-1">
+                    <label>Apellidos:</label>
+                    <input type="text" id="obApellidos" class="grupo-formulario__input" required>
+                </div>
+            </div>
+
+            <div class="form-flex-gap">
+                <div class="grupo-formulario grupo-formulario--flex-1">
+                    <label>Cédula:</label>
+                    <input type="text" id="obCedula" class="grupo-formulario__input" required>
+                </div>
+                <div class="grupo-formulario grupo-formulario--flex-1">
+                    <label>Sexo:</label>
+                    <select id="obSexo" class="grupo-formulario__select">
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-flex-gap">
+                <div class="grupo-formulario grupo-formulario--flex-1">
+                    <label>Edad:</label>
+                    <input type="number" id="obEdad" class="grupo-formulario__input" required>
+                </div>
+                <div class="grupo-formulario grupo-formulario--flex-1">
+                    <label>Teléfono:</label>
+                    <input type="text" id="obTelefono" class="grupo-formulario__input">
+                </div>
+            </div>
+
+            <div class="grupo-formulario">
+                <label>Cargo:</label>
+                <input type="text" id="obCargo" class="grupo-formulario__input" required>
+            </div>
+
+            <div class="grupo-formulario">
+                <label>Discapacidad (Opcional):</label>
+                <input type="text" id="obDiscapacidad" class="grupo-formulario__input" value="Ninguna">
+            </div>
+
+            <div class="grupo-formulario">
+                <label>Tipo de Horario:</label>
+                <select id="obTipoHorario" class="grupo-formulario__select">
+                    <option value="diario">Diario (Lunes a Viernes)</option>
+                    <option value="guardia">Guardia (Por Turnos)</option>
+                </select>
+            </div>
+
+            <div class="grupo-formulario">
+                <label>Permisos/Observaciones:</label>
+                <input type="text" id="obPermisos" class="grupo-formulario__input" value="Ninguno">
+            </div>
+
+            <button type="submit" class="boton">Guardar Ficha</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Ver Detalles Obrero -->
+<div id="verObreroModal" class="modal">
+    <div class="modal__contenido">
+        <span class="modal__cerrar" onclick="cerrarModal('verObreroModal')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--secundario">
+            <img src="/img/icons/user.svg" alt="user">
+        </div>
+        <h2 class="modal__titulo-centrado">Detalles del Obrero</h2>
+        <div class="detalle-obrero-grid">
+            <div class="grupo-detalle">
+                <label>Nombre Completo:</label>
+                <p id="verNombreCompleto"></p>
+            </div>
+            <div class="grupo-detalle">
+                <label>Cédula:</label>
+                <p id="verCedula"></p>
+            </div>
+            <div class="grupo-detalle">
+                <label>Cargo:</label>
+                <p id="verCargo"></p>
+            </div>
+            <div class="grupo-detalle">
+                <label>Fecha de Ingreso al Sistema:</label>
+                <p id="verFechaIngreso"></p>
+            </div>
+            <div class="grupo-detalle">
+                <label>Sexo:</label>
+                <p id="verSexo"></p>
+            </div>
+            <div class="grupo-detalle">
+                <label>Edad:</label>
+                <p id="verEdad"></p>
+            </div>
+            <div class="grupo-detalle">
+                <label>Teléfono:</label>
+                <p id="verTelefono"></p>
+            </div>
+            <div class="grupo-detalle">
+                <label>Discapacidad:</label>
+                <p id="verDiscapacidad"></p>
+            </div>
+            <div class="grupo-detalle full-width">
+                <label>Notas/Permisos:</label>
+                <p id="verPermisos"></p>
+            </div>
+        </div>
+        <br>
+        <div class="text-align-right">
+            <button class="boton" onclick="cerrarModal('verObreroModal')">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Gestión de Guardias -->
+<div id="guardiasModal" class="modal">
+    <div class="modal__contenido modal__contenido--ancho-600">
+        <span class="modal__cerrar" onclick="cerrarModal('guardiasModal')">&times;</span>
+        <div class="modal__encabezado-icono modal__encabezado-icono--secundario">
+            <img src="/img/icons/calendar-event.svg" alt="calendar">
+        </div>
+        <h2 class="modal__titulo-centrado">Gestionar Días de Guardia</h2>
+        <p class="texto-centrado-margen-bottom">Selecciona los días que el obrero tiene guardia este mes.</p>
+        
+        <div class="cabecera-calendario">
+            <button class="boton boton--icono boton--secundario" onclick="cambiarMesGuardia(-1)">
+                <img src="/img/icons/caret-left.svg" alt="caret-left">
+            </button>
+            <h3 id="tituloMesGuardia" class="titulo-sin-margen"></h3>
+            <button class="boton boton--icono boton--secundario" onclick="cambiarMesGuardia(1)">
+                <img src="/img/icons/caret-right.svg" alt="caret-right">
+            </button>
+        </div>
+
+        <div id="calendarioGuardias" class="calendario-grid"></div>
+
+        <div class="contenedor-boton-derecha">
+            <button class="boton" onclick="guardarGuardias()">Guardar Cambios</button>
+        </div>
+    </div>
+</div>

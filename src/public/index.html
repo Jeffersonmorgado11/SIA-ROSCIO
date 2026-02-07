@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Gestión S.I.A ROSCIO | Login</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="pagina-ingreso">
+  <!-- ===================== Logo ===================== -->
+  <div>
+    <img src="img/logo.png" alt="logo" class="logo">
+  </div>
+  <!-- ===================== Formulario de Ingreso ===================== -->
+  <div class="tarjeta-ingreso">
+    <form id="loginForm">
+      <h1 class="tarjeta-ingreso__titulo">Bienvenido</h1>
+      <div class="grupo-formulario">
+        <input type="text" id="email" class="grupo-formulario__input" placeholder="Correo Electrónico" required>
+        <img class="grupo-formulario__icono" src="img/icons/user.svg" alt="user">
+      </div>
+      <div class="grupo-formulario">
+        <input type="password" id="password" class="grupo-formulario__input" placeholder="Contraseña" required>
+        <img class="grupo-formulario__icono toggle-password" src="img/icons/eye.svg" alt="eye">
+      </div>
+      <div class="tarjeta-ingreso__acciones" style="justify-content: center;">
+        <a href="recuperar.html">¿Olvidaste tu contraseña?</a>
+      </div>
+      <button type="submit" class="boton">Ingresar</button>
+      <div class="tarjeta-ingreso__pie">
+        <p>¿No tienes una cuenta? <a href="registro.html">Regístrate</a></p>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- ===================== Scripts ===================== -->
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
